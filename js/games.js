@@ -1,15 +1,42 @@
 /* ===================================================
-   GAMES: Скрипты 3 мини-игр (Мемори, Маршрут, Квиз)
+   GAMES: Скрипты 3 мини-игр + Виджет-переключатель
    =================================================== */
 
 (function() {
   'use strict';
 
   document.addEventListener('DOMContentLoaded', function() {
+    initGamesWidget();
     initMemoryGame();
     initRouteGame();
     initQuizGame();
   });
+
+  /* ===================================================
+     0. ВИДЖЕТ-ПЕРЕКЛЮЧАТЕЛЬ ИГР
+     =================================================== */
+  function initGamesWidget() {
+    const tabBtns = document.querySelectorAll('.game-tab-btn');
+    const gameBlocks = document.querySelectorAll('.game-block');
+
+    if (!tabBtns.length || !gameBlocks.length) return;
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const gameId = btn.dataset.game;
+
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        gameBlocks.forEach(block => {
+          block.classList.remove('active');
+          if (block.id === `game-block-${gameId}`) {
+            block.classList.add('active');
+          }
+        });
+      });
+    });
+  }
 
   /* ===================================================
      1. МИНИ-ИГРА: «НАЙДИ ПАРУ» (Memory Game)
@@ -174,7 +201,6 @@
       resultEl.classList.remove('show');
       currentIndex = 0;
 
-      // Создаем перемешанный массив
       const shuffled = [...correctOrder].sort(() => Math.random() - 0.5);
 
       shuffled.forEach(name => {
