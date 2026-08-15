@@ -1,0 +1,380 @@
+/* ===================================================
+   FEATURES: Сетка характеристик + Интерактивный Glass Roadmap Slider
+   =================================================== */
+
+/* ---------- Характеристики ---------- */
+.features {
+  padding: 80px 0 var(--section-gap);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glass-shadow-hover);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.feature-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.feature-icon.lake {
+  background: var(--accent-lake-glow);
+  color: var(--accent-lake);
+}
+
+.feature-icon.terra {
+  background: var(--accent-terra-glow);
+  color: var(--accent-terra);
+}
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===================================================
+   КАРТОЧКА СТОИМОСТИ ТУРА (28.900 ₽)
+   =================================================== */
+.price-card-glass {
+  margin-top: 48px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow-hover);
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.price-card-glass:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 60px rgba(31, 92, 99, 0.18);
+}
+
+.price-card-photo {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.price-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.price-card-glass:hover .price-card-photo img {
+  transform: scale(1.06);
+}
+
+.price-photo-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.price-card-content {
+  padding: 40px 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.price-label {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-lake);
+  margin-bottom: 6px;
+}
+
+.price-amount {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.price-amount span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.price-includes-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 12px;
+}
+
+.price-includes-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px 20px;
+  margin-bottom: 20px;
+}
+
+.price-includes-list li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.price-note {
+  font-size: 0.82rem;
+  color: var(--accent-terra);
+  font-weight: 600;
+  background: var(--accent-terra-glow);
+  padding: 8px 16px;
+  border-radius: 100px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+@media (max-width: 900px) {
+  .price-card-glass {
+    grid-template-columns: 1fr;
+  }
+  .price-card-photo {
+    height: 220px;
+    min-height: 220px;
+  }
+  .price-card-content {
+    padding: 28px 24px;
+  }
+  .price-includes-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* ===================================================
+   ROADMAP: Интерактивный Glass-Слайдер Маршрута
+   =================================================== */
+.route-map {
+  padding: 0 0 var(--section-gap);
+  overflow: visible;
+}
+
+.roadmap-slider-container {
+  margin-top: 48px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Навигация слайдера */
+.roadmap-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.roadmap-step-badge {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  background: var(--accent-lake-glow);
+  padding: 8px 18px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roadmap-nav-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.roadmap-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  color: var(--text-main);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.roadmap-btn:hover {
+  background: var(--accent-lake);
+  color: #fff;
+  border-color: var(--accent-lake);
+  transform: scale(1.08);
+}
+
+.roadmap-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Слайдер карточек с расширенными отступами от обрезания */
+.roadmap-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 24px 24px 48px 24px;
+  margin: 0 -24px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.roadmap-track::-webkit-scrollbar {
+  display: none;
+}
+
+.roadmap-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.roadmap-card:last-child {
+  margin-right: 24px;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--glass-shadow-hover);
+  border-color: var(--accent-lake-light);
+  z-index: 10;
+}
+
+.roadmap-card.active {
+  border-color: var(--accent-lake);
+  background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(31,92,99,0.06));
+}
+
+.roadmap-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.roadmap-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-lake);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--accent-lake-glow);
+}
+
+.roadmap-card.start .roadmap-number,
+.roadmap-card.end .roadmap-number {
+  background: var(--accent-terra);
+  box-shadow: 0 4px 12px var(--accent-terra-glow);
+}
+
+.roadmap-icon {
+  font-size: 1.6rem;
+}
+
+.roadmap-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.roadmap-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .roadmap-card {
+    flex: 0 0 240px;
+    padding: 22px 18px;
+  }
+}

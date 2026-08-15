@@ -1,0 +1,187 @@
+/* ===================================================
+   EASTER EGGS: Поля страницы & Секретные Пасхалки (🐴 🐄 🐐)
+   =================================================== */
+
+.easter-animal-badge {
+  position: absolute;
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  box-shadow: var(--glass-shadow);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.easter-animal-badge:hover {
+  transform: translateY(-4px) scale(1.08);
+  box-shadow: var(--glass-shadow-hover);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--accent-lake);
+}
+
+.easter-animal-badge.found {
+  background: rgba(31, 92, 99, 0.15);
+  border-color: var(--accent-lake);
+  box-shadow: 0 0 20px var(--accent-lake-glow);
+}
+
+.easter-animal-badge .emoji {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.easter-animal-badge .label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Расположение плавающих плашек на полях десктопа */
+#easter-horse-wrap {
+  top: 1400px;
+  left: 20px;
+}
+
+#easter-cow-wrap {
+  top: 2600px;
+  right: 20px;
+}
+
+#easter-goat-wrap {
+  top: 4200px;
+  left: 20px;
+}
+
+/* ---------- МОБИЛЬНАЯ АДАПТАЦИЯ ПАСХАЛОК (<768px) ---------- */
+/* На телефонах объединяем животных в аккуратный нижний плавающий стеклянный бар */
+@media (max-width: 768px) {
+  #easter-horse-wrap,
+  #easter-cow-wrap,
+  #easter-goat-wrap {
+    position: fixed;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: 16px;
+    z-index: 1000;
+    padding: 8px 12px;
+  }
+
+  #easter-horse-wrap {
+    left: 16px !important;
+  }
+
+  #easter-cow-wrap {
+    left: 50% !important;
+    transform: translateX(-50%);
+  }
+
+  #easter-goat-wrap {
+    right: 16px !important;
+  }
+
+  .easter-animal-badge .label {
+    font-size: 0.7rem;
+  }
+  .easter-animal-badge .emoji {
+    font-size: 1.1rem;
+  }
+}
+
+/* ---------- МОДАЛЬНОЕ ОКНО ПАСХАЛКИ ---------- */
+.easter-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.easter-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.easter-modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 40px 32px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+  border: 1px solid var(--border-soft);
+  position: relative;
+  transform: scale(0.85);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.easter-modal-overlay.active .easter-modal {
+  transform: scale(1);
+}
+
+.easter-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--bg-sand);
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.easter-modal-emoji {
+  font-size: 3.5rem;
+  margin-bottom: 16px;
+}
+
+.easter-modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-lake);
+  margin-bottom: 12px;
+}
+
+.easter-modal p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.easter-stamp-badge {
+  display: inline-block;
+  padding: 10px 24px;
+  background: linear-gradient(135deg, var(--accent-lake), var(--accent-lake-light));
+  color: #fff;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px var(--accent-lake-glow);
+}
