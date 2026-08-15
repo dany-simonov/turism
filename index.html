@@ -817,7 +817,7 @@
   </section>
 
   <!-- ============================================
-       ЭКОПАСПОРТ (интерактивный блок)
+       ЭКОПАСПОРТ, ПРАВИЛА И ЧЕК-ЛИСТ
        ============================================ -->
   <section class="ecopassport" id="ecopassport">
     <div class="container">
@@ -893,6 +893,136 @@
           </div>
         </div>
       </div>
+
+      <!-- ИНТЕРАКТИВНЫЕ ПРАВИЛА МАРШРУТА (+ / -) И ЧЕК-ЛИСТ (A4-1 & A4-2) -->
+      <div class="ecopassport-docs-container fade-in">
+
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div class="section-label">Кодекс & Памятка</div>
+          <h2 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--text-main);">Правила участника & Чек-лист эко-путешествия</h2>
+        </div>
+
+        <div class="ecodocs-tabs-nav">
+          <button class="ecodoc-tab-btn active" id="btn-show-rules">📜 Правила участника (11 экологических табу и норм)</button>
+          <button class="ecodoc-tab-btn" id="btn-show-checklist">🎒 Чек-лист: Что взять с собой</button>
+        </div>
+
+        <!-- БЛОК 1: ПРАВИЛА МАРШРУТА (+ / -) -->
+        <div id="block-ecodoc-rules">
+          <div class="rules-grid">
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge plus">+</div>
+              <div class="rule-text">Использовать многоразовую бутылку, термокружку и эко-сумку</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge minus">-</div>
+              <div class="rule-text">Не оставлять мусор на протяжении всего экомаршрута</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge plus">+</div>
+              <div class="rule-text">Сортировать отходы везде, где организован раздельный сбор</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge minus">-</div>
+              <div class="rule-text">Не собирать дикорастущие растения, редкие цветы и древесину</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge minus">-</div>
+              <div class="rule-text">Не кормить диких животных человеческой пищей</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge minus">-</div>
+              <div class="rule-text">Не приближаться к гнёздам и естественным местам обитания фауны</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge minus">-</div>
+              <div class="rule-text">Не наносить надписи и автографы на древние скалы и петроглифы</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge minus">-</div>
+              <div class="rule-text">Не уносить камни и артефакты; ходить только по маркированным тропам</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge plus">+</div>
+              <div class="rule-text">Строго соблюдать правила безопасного поведения у воды и на озере</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge plus">+</div>
+              <div class="rule-text">Уважительно относиться к местным жителям, культуре и традициям</div>
+            </div>
+
+            <div class="rule-item-card">
+              <div class="rule-icon-badge plus">+</div>
+              <div class="rule-text">Фотографировать людей только с их прямого личного согласия</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- БЛОК 2: ЧЕК-ЛИСТ ПУТЕШЕСТВЕННИКА -->
+        <div id="block-ecodoc-checklist" style="display: none;">
+          <div class="checklist-grid">
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">👟 Обувь</div>
+              <div class="checklist-card-desc">Самые удобные (и стильные!) кроссовки с хорошим сцеплением для прогулок на весь день.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">👕 Одежда</div>
+              <div class="checklist-card-desc">Комфортные повседневные луки для крутых фоток + запасной комплект. Главный секрет гор — многослойность.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">🧥 Утепление</div>
+              <div class="checklist-card-desc">Любимое объемное худи или мягкая флиска для душевных прохладных вечеров у костра.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">🌧️ Защита от непогоды</div>
+              <div class="checklist-card-desc">Лёгкая ветровка или дождевик, который спасёт от внезапного горного дождя.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">🕶️ Аксессуары</div>
+              <div class="checklist-card-desc">Солнцезащитные очки и стильная панама/бейболка, чтобы солнце на высоте не напекло голову.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">🎒 Сумка</div>
+              <div class="checklist-card-desc">Небольшой городской рюкзак для дневных вылазок, куда поместится всё необходимое.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">🔋 Гаджеты</div>
+              <div class="checklist-card-desc">Смартфон с кучей свободной памяти и мощный пауэрбанк — контент сам себя не снимет!</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">💧 Эко-набор</div>
+              <div class="checklist-card-desc">Твоя любимая многоразовая бутылка для воды или стильная термокружка.</div>
+            </div>
+
+            <div class="checklist-card">
+              <div class="checklist-card-header">🩹 Личная аптечка</div>
+              <div class="checklist-card-desc">Набор проверенных лекарств, пластыри от мозолей и солнцезащитный крем с высоким SPF.</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
     </div>
   </section>
 
@@ -1161,5 +1291,30 @@
   <script src="js/games.js"></script>
   <script src="js/easter-egg.js"></script>
   <script src="js/smooth-scroll.js"></script>
+
+  <!-- Переключатель вкладок Правил / Чек-листа в Экопаспорте -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const btnRules = document.getElementById('btn-show-rules');
+      const btnChecklist = document.getElementById('btn-show-checklist');
+      const blockRules = document.getElementById('block-ecodoc-rules');
+      const blockChecklist = document.getElementById('block-ecodoc-checklist');
+
+      if (btnRules && btnChecklist && blockRules && blockChecklist) {
+        btnRules.addEventListener('click', function() {
+          btnRules.classList.add('active');
+          btnChecklist.classList.remove('active');
+          blockRules.style.display = 'block';
+          blockChecklist.style.display = 'none';
+        });
+        btnChecklist.addEventListener('click', function() {
+          btnChecklist.classList.add('active');
+          btnRules.classList.remove('active');
+          blockChecklist.style.display = 'block';
+          blockRules.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
