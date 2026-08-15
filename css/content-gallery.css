@@ -64,10 +64,16 @@
   grid-column: span 2;
 }
 
-/* Особый размер для IMG_6584 (больше среднего, не самый большой) */
 .gallery-item.size-horse-md {
   grid-row: span 2;
   grid-column: span 2;
+}
+
+/* Полная ширина для фото всей группы (2K5A7732.jpg) */
+.gallery-item.size-full {
+  grid-column: span 4;
+  grid-row: span 2;
+  min-height: 420px;
 }
 
 @media (max-width: 1024px) {
@@ -75,6 +81,9 @@
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: 200px;
     gap: 16px;
+  }
+  .gallery-item.size-full {
+    grid-column: span 3;
   }
 }
 
@@ -85,7 +94,8 @@
     gap: 12px;
   }
   .gallery-item.size-lg,
-  .gallery-item.size-horse-md {
+  .gallery-item.size-horse-md,
+  .gallery-item.size-full {
     grid-column: span 2;
     grid-row: span 2;
   }
@@ -100,7 +110,8 @@
   .gallery-item.size-md,
   .gallery-item.size-lg,
   .gallery-item.size-wide,
-  .gallery-item.size-horse-md {
+  .gallery-item.size-horse-md,
+  .gallery-item.size-full {
     grid-column: span 1;
     grid-row: span 1;
   }
