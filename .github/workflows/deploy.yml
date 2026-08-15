@@ -7,9 +7,8 @@ on:
       - master
   workflow_dispatch:
 
-# Права доступа для GitHub Pages deployment
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -18,7 +17,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  # Способ 1: Прямой деплой через GitHub Actions (если в Settings -> Pages выбран источник "GitHub Actions")
+  deploy-pages:
+    name: Deploy via GitHub Actions
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -26,11 +27,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
@@ -40,3 +36,18 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Способ 2: Публикация в ветку gh-pages (если в Settings -> Pages выбран источник "Deploy from a branch")
+  deploy-branch:
+    name: Deploy to gh-pages branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Push to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages

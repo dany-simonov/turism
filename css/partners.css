@@ -1,5 +1,5 @@
 /* ===================================================
-   PARTNERS: Организаторы и партнёры (С выравниванием по левому краю)
+   PARTNERS: Организаторы и партнёры (Выравнивание по левому краю)
    =================================================== */
 
 .partners-section {
@@ -27,18 +27,27 @@
   width: 100%;
 }
 
-/* Главный организатор - КРСУ */
+.partners-main {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Главный организатор - КРСУ & СКФУ */
 .partner-card-main {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
-  padding: 24px 36px;
+  padding: 24px 32px;
   box-shadow: var(--shadow-card);
   display: inline-flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   border: 1px solid var(--border-soft);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 600px;
+  flex: 1 1 340px;
+  max-width: 500px;
 }
 
 .partner-card-main:hover {
@@ -57,6 +66,23 @@
 }
 
 .partner-logo-krsu-wrap img {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+}
+
+.partner-logo-skfu-wrap {
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.partner-logo-skfu-wrap img {
   height: 44px;
   width: auto;
   object-fit: contain;
