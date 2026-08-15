@@ -1,0 +1,144 @@
+/* ===================================================
+   RESPONSIVE: Все медиа-запросы в одном месте
+   =================================================== */
+
+/* ---------- Планшеты (≤ 1024px) ---------- */
+@media (max-width: 1024px) {
+  :root {
+    --section-gap: 80px;
+  }
+
+  .day-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .day-photo {
+    aspect-ratio: 16/10;
+    max-height: 400px;
+  }
+
+  .ecopassport-inner {
+    grid-template-columns: 1fr;
+    padding: 48px 32px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Мобильные (≤ 768px) ---------- */
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 64px;
+  }
+
+  /* Навигация → выпадающее меню */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(251, 247, 241, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    color: var(--text-main) !important;
+    font-size: 1rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  /* Hero */
+  .hero h1 {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .hero-chips {
+    gap: 8px;
+  }
+
+  .hero-chip {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  /* SMART-цель */
+  .smart-goal-inner {
+    padding: 40px 24px;
+  }
+
+  /* Характеристики */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Сертификат */
+  .certificate-inner {
+    padding: 48px 24px;
+  }
+
+  /* Дни */
+  .day-layout {
+    gap: 24px;
+  }
+
+  .stamps-grid {
+    flex-direction: column;
+  }
+
+  .stamp-card {
+    min-width: unset;
+  }
+
+  /* Футер */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  /* Пасхалка */
+  .easter-modal {
+    margin: 16px;
+    padding: 32px 24px;
+  }
+
+  #easter-horse {
+    bottom: 40px;
+    right: 20px;
+  }
+}
+
+/* ---------- Маленькие экраны (≤ 480px) ---------- */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .day-tab {
+    padding: 10px 20px;
+    font-size: 0.72rem;
+  }
+
+  .passport-mockup {
+    padding: 24px 16px;
+  }
+
+  .passport-stamps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

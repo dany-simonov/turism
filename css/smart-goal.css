@@ -1,0 +1,60 @@
+/* ===================================================
+   SMART-GOAL: Блок SMART-цели маршрута
+   =================================================== */
+
+.smart-goal {
+  padding: var(--section-gap) 0 80px;
+  position: relative;
+}
+
+.smart-goal-inner {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-lake) 0%, var(--accent-lake-light) 100%);
+  border-radius: var(--radius-xl);
+  padding: 64px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.smart-goal-inner::before {
+  content: '»';
+  position: absolute;
+  top: -40px;
+  left: 32px;
+  font-size: 12rem;
+  font-family: var(--font-display);
+  color: rgba(255, 255, 255, 0.06);
+  line-height: 1;
+}
+
+.smart-goal-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-terra-light);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.smart-goal-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent-terra-light);
+  border-radius: 2px;
+}
+
+.smart-goal blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  border: none;
+  padding: 0;
+  max-width: 900px;
+}

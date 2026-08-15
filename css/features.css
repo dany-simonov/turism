@@ -1,0 +1,231 @@
+/* ===================================================
+   FEATURES: Сетка характеристик + Интерактивный Glass Roadmap Slider
+   =================================================== */
+
+/* ---------- Характеристики ---------- */
+.features {
+  padding: 80px 0 var(--section-gap);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.feature-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--glass-shadow-hover);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.feature-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.feature-icon.lake {
+  background: var(--accent-lake-glow);
+  color: var(--accent-lake);
+}
+
+.feature-icon.terra {
+  background: var(--accent-terra-glow);
+  color: var(--accent-terra);
+}
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===================================================
+   ROADMAP: Интерактивный Glass-Слайдер Маршрута
+   =================================================== */
+.route-map {
+  padding: 0 0 var(--section-gap);
+}
+
+.roadmap-slider-container {
+  margin-top: 48px;
+  position: relative;
+}
+
+/* Навигация слайдера */
+.roadmap-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.roadmap-step-badge {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  background: var(--accent-lake-glow);
+  padding: 8px 18px;
+  border-radius: 100px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roadmap-nav-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.roadmap-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  color: var(--text-main);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+}
+
+.roadmap-btn:hover {
+  background: var(--accent-lake);
+  color: #fff;
+  border-color: var(--accent-lake);
+  transform: scale(1.08);
+}
+
+.roadmap-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Слайдер карточек */
+.roadmap-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 16px 4px 32px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+}
+
+.roadmap-track::-webkit-scrollbar {
+  display: none;
+}
+
+.roadmap-card {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.roadmap-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: var(--glass-shadow-hover);
+  border-color: var(--accent-lake-light);
+}
+
+.roadmap-card.active {
+  border-color: var(--accent-lake);
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(31,92,99,0.06));
+}
+
+.roadmap-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.roadmap-number {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-lake);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px var(--accent-lake-glow);
+}
+
+.roadmap-card.start .roadmap-number,
+.roadmap-card.end .roadmap-number {
+  background: var(--accent-terra);
+  box-shadow: 0 4px 12px var(--accent-terra-glow);
+}
+
+.roadmap-icon {
+  font-size: 1.6rem;
+}
+
+.roadmap-card-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+
+.roadmap-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .roadmap-card {
+    flex: 0 0 240px;
+    padding: 22px 18px;
+  }
+}

@@ -1,0 +1,1404 @@
+/* ===================================================
+   ЦИФРОВОЙ НОМАД: ИССЫК-КУЛЬСКОЕ КОЛЬЦО — СТИЛИ
+   Тёплая «горно-озёрная» палитра, Pinterest-эстетика
+   =================================================== */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Палитра */
+  --bg-warm: #FBF7F1;
+  --bg-sand: #F5EDE0;
+  --bg-card: #FFFFFF;
+  --accent-lake: #1F5C63;
+  --accent-lake-light: #2C6E75;
+  --accent-lake-glow: rgba(31, 92, 99, 0.12);
+  --accent-terra: #C97A3D;
+  --accent-terra-light: #D98E4F;
+  --accent-terra-glow: rgba(201, 122, 61, 0.15);
+  --text-main: #2A2A28;
+  --text-muted: #6B6560;
+  --text-light: #9A9490;
+  --border-soft: rgba(42, 42, 40, 0.08);
+  --shadow-card: 0 4px 24px rgba(42, 42, 40, 0.07);
+  --shadow-card-hover: 0 8px 40px rgba(42, 42, 40, 0.12);
+  --shadow-hero: 0 20px 60px rgba(0, 0, 0, 0.25);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Типографика */
+  --font-display: 'Unbounded', cursive;
+  --font-body: 'Inter', sans-serif;
+
+  /* Размеры */
+  --container: 1200px;
+  --section-gap: 120px;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  background-color: var(--bg-warm);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--accent-lake);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-terra);
+}
+
+/* ---------- Utility ---------- */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-terra);
+  margin-bottom: 16px;
+}
+
+.section-label::before {
+  content: '';
+  width: 32px;
+  height: 2px;
+  background: var(--accent-terra);
+  border-radius: 2px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 640px;
+  line-height: 1.7;
+}
+
+/* ---------- Scroll animations ---------- */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ============================================
+   HEADER / NAV
+   ============================================ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 0;
+  transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(251, 247, 241, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+  padding: 10px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  transition: color 0.4s ease;
+}
+
+.site-header.scrolled .nav-logo {
+  color: var(--accent-lake);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.site-header.scrolled .nav-links a {
+  color: var(--text-muted);
+}
+
+.nav-links a:hover {
+  color: var(--accent-terra);
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-terra);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.site-header.scrolled .mobile-toggle span {
+  background: var(--text-main);
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 92, 99, 0.35) 0%,
+    rgba(42, 42, 40, 0.55) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 860px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  padding: 8px 20px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  animation: fadeInDown 0.8s ease 0.2s both;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  animation: fadeInDown 0.8s ease 0.4s both;
+}
+
+.hero h1 span {
+  display: block;
+  font-size: 0.55em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 12px;
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+.hero-chip {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 100px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-scroll {
+  margin-top: 48px;
+  animation: fadeInUp 0.8s ease 0.8s both;
+}
+
+.hero-scroll a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 14px 36px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 100px;
+  transition: all 0.3s ease;
+}
+
+.hero-scroll a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.7);
+  color: #fff;
+}
+
+.scroll-arrow {
+  display: inline-block;
+  animation: bounceArrow 2s ease infinite;
+}
+
+/* Hero животное-пасхалка */
+.easter-animal {
+  position: absolute;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.2;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 5;
+  user-select: none;
+  filter: grayscale(0.5);
+}
+
+.easter-animal:hover {
+  opacity: 0.9;
+  transform: scale(1.3);
+  filter: grayscale(0);
+}
+
+.easter-animal.found {
+  opacity: 1;
+  filter: grayscale(0);
+  animation: animalBounce 0.5s ease;
+}
+
+#easter-horse {
+  bottom: 80px;
+  right: 40px;
+}
+
+#easter-cow {
+  /* будет в секции дня 4 */
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+}
+
+#easter-goat {
+  /* будет в футере */
+  position: relative;
+  display: inline-block;
+}
+
+@keyframes animalBounce {
+  0%, 100% { transform: scale(1.3); }
+  50% { transform: scale(1.6) rotate(10deg); }
+}
+
+/* ============================================
+   SMART-ЦЕЛЬ
+   ============================================ */
+.smart-goal {
+  padding: var(--section-gap) 0 80px;
+  position: relative;
+}
+
+.smart-goal-inner {
+  position: relative;
+  background: linear-gradient(135deg, var(--accent-lake) 0%, var(--accent-lake-light) 100%);
+  border-radius: var(--radius-xl);
+  padding: 64px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.smart-goal-inner::before {
+  content: '»';
+  position: absolute;
+  top: -40px;
+  left: 32px;
+  font-size: 12rem;
+  font-family: var(--font-display);
+  color: rgba(255, 255, 255, 0.06);
+  line-height: 1;
+}
+
+.smart-goal-label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent-terra-light);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.smart-goal-label::before {
+  content: '';
+  width: 28px;
+  height: 2px;
+  background: var(--accent-terra-light);
+  border-radius: 2px;
+}
+
+.smart-goal blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  border: none;
+  padding: 0;
+  max-width: 900px;
+}
+
+/* ============================================
+   ХАРАКТЕРИСТИКИ (сетка карточек)
+   ============================================ */
+.features {
+  padding: 80px 0 var(--section-gap);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.feature-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-soft);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.feature-icon.lake {
+  background: var(--accent-lake-glow);
+}
+
+.feature-icon.terra {
+  background: var(--accent-terra-glow);
+}
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ============================================
+   КАРТА МАРШРУТА (стилизованная схема)
+   ============================================ */
+.route-map {
+  padding: 0 0 var(--section-gap);
+}
+
+.route-map-visual {
+  margin-top: 48px;
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 48px 32px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-soft);
+  overflow-x: auto;
+}
+
+.route-points {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 1000px;
+  padding: 24px 0;
+}
+
+.route-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.route-dot {
+  width: 18px;
+  height: 18px;
+  background: var(--accent-lake);
+  border-radius: 50%;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 3px var(--accent-lake-glow), 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 2;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.route-point:hover .route-dot {
+  transform: scale(1.3);
+  background: var(--accent-terra);
+}
+
+.route-point.start .route-dot,
+.route-point.end .route-dot {
+  width: 24px;
+  height: 24px;
+  background: var(--accent-terra);
+  box-shadow: 0 0 0 4px var(--accent-terra-glow), 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.route-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-top: 12px;
+  max-width: 90px;
+  line-height: 1.3;
+}
+
+.route-connector {
+  flex: 1;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-lake) 0%, var(--accent-lake-light) 100%);
+  border-radius: 3px;
+  min-width: 20px;
+  opacity: 0.3;
+}
+
+/* ============================================
+   ДЕНЬ ЗА ДНЁМ (табы + контент)
+   ============================================ */
+.days-section {
+  padding: 0 0 var(--section-gap);
+}
+
+.days-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 48px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.days-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.day-tab {
+  flex-shrink: 0;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid var(--border-soft);
+  background: var(--bg-card);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.day-tab:hover {
+  border-color: var(--accent-lake-light);
+  color: var(--accent-lake);
+}
+
+.day-tab.active {
+  background: var(--accent-lake);
+  border-color: var(--accent-lake);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(31, 92, 99, 0.25);
+}
+
+.day-content {
+  display: none;
+  animation: fadeInDay 0.5s ease;
+}
+
+.day-content.active {
+  display: block;
+}
+
+@keyframes fadeInDay {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.day-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.day-photo {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 3/4;
+}
+
+.day-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.day-photo:hover img {
+  transform: scale(1.03);
+}
+
+.day-info {
+  padding: 8px 0;
+}
+
+.day-header {
+  margin-bottom: 28px;
+}
+
+.day-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent-terra);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.day-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.day-route-info {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.day-block {
+  margin-bottom: 28px;
+}
+
+.day-block h4 {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.day-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day-block li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.day-block li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-terra);
+}
+
+.day-block p {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Штампы экопаспорта */
+.stamps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stamp-card {
+  background: var(--accent-lake-glow);
+  border: 1px solid rgba(31, 92, 99, 0.12);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+}
+
+.stamp-card:hover {
+  transform: translateY(-2px);
+}
+
+.stamp-emoji {
+  font-size: 1.5rem;
+}
+
+.stamp-info {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  line-height: 1.4;
+}
+
+.stamp-points {
+  font-weight: 700;
+  color: var(--accent-terra);
+  font-size: 0.75rem;
+}
+
+/* ============================================
+   ЭКОПАСПОРТ (акцентный блок)
+   ============================================ */
+.ecopassport {
+  padding: 0 0 var(--section-gap);
+}
+
+.ecopassport-inner {
+  background: var(--bg-sand);
+  border-radius: var(--radius-xl);
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ecopassport-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.ecopassport-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.ecopassport-prizes {
+  list-style: none;
+  padding: 0;
+  margin-top: 24px;
+}
+
+.ecopassport-prizes li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ecopassport-prizes li:last-child {
+  border-bottom: none;
+}
+
+/* Имитация экрана бота */
+.passport-mockup {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.passport-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.passport-header h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-lake);
+  margin-top: 12px;
+}
+
+.passport-header p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.passport-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-lake), var(--accent-terra));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.passport-progress {
+  margin-bottom: 24px;
+}
+
+.passport-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.passport-progress-bar {
+  height: 8px;
+  background: var(--border-soft);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.passport-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-lake), var(--accent-terra));
+  border-radius: 100px;
+  width: 72%;
+  transition: width 1.5s ease;
+}
+
+.passport-stamps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.passport-stamp {
+  text-align: center;
+  padding: 12px 8px;
+  background: var(--bg-warm);
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s ease;
+}
+
+.passport-stamp:hover {
+  transform: scale(1.05);
+}
+
+.passport-stamp .emoji {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.passport-stamp .name {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+/* ============================================
+   СЕРТИФИКАТ
+   ============================================ */
+.certificate {
+  padding: 0 0 var(--section-gap);
+}
+
+.certificate-inner {
+  position: relative;
+  background: linear-gradient(135deg, #F5EDE0, #F0E5D2);
+  border-radius: var(--radius-xl);
+  padding: 72px 64px;
+  text-align: center;
+  overflow: hidden;
+  border: 2px dashed var(--accent-terra);
+}
+
+.certificate-inner::before {
+  content: '🌱';
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  font-size: 3rem;
+  opacity: 0.15;
+}
+
+.certificate-inner::after {
+  content: '🏔️';
+  position: absolute;
+  bottom: 24px;
+  right: 32px;
+  font-size: 3rem;
+  opacity: 0.15;
+}
+
+.certificate-icon {
+  font-size: 4rem;
+  margin-bottom: 24px;
+}
+
+.certificate h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--accent-lake);
+  margin-bottom: 16px;
+}
+
+.certificate p {
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.certificate-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 12px 28px;
+  background: rgba(201, 122, 61, 0.1);
+  border-radius: 100px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-terra);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--text-main);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 64px 0 32px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  position: relative;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-chip {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ============================================
+   МОДАЛЬНОЕ ОКНО ПАСХАЛКИ
+   ============================================ */
+.easter-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 42, 40, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  animation: modalFadeIn 0.4s ease;
+}
+
+.easter-modal-overlay.show {
+  display: flex;
+}
+
+.easter-modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  animation: modalSlideUp 0.5s ease;
+  position: relative;
+}
+
+.easter-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 8px;
+  transition: color 0.3s ease;
+}
+
+.easter-modal-close:hover {
+  color: var(--text-main);
+}
+
+.easter-modal-emoji {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.easter-modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-lake);
+  margin-bottom: 12px;
+}
+
+.easter-modal p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.easter-stamp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--accent-lake), var(--accent-terra));
+  border-radius: 100px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* Конфетти */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10001;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  :root {
+    --section-gap: 80px;
+  }
+
+  .day-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .day-photo {
+    aspect-ratio: 16/10;
+    max-height: 400px;
+  }
+
+  .ecopassport-inner {
+    grid-template-columns: 1fr;
+    padding: 48px 32px;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 64px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(251, 247, 241, 0.98);
+    backdrop-filter: blur(16px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 16px;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    color: var(--text-main) !important;
+    font-size: 1rem;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .hero-chips {
+    gap: 8px;
+  }
+
+  .hero-chip {
+    padding: 8px 14px;
+    font-size: 0.78rem;
+  }
+
+  .smart-goal-inner {
+    padding: 40px 24px;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certificate-inner {
+    padding: 48px 24px;
+  }
+
+  .day-layout {
+    gap: 24px;
+  }
+
+  .stamps-grid {
+    flex-direction: column;
+  }
+
+  .stamp-card {
+    min-width: unset;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .easter-modal {
+    margin: 16px;
+    padding: 32px 24px;
+  }
+
+  #easter-horse {
+    bottom: 40px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .day-tab {
+    padding: 10px 20px;
+    font-size: 0.72rem;
+  }
+
+  .passport-mockup {
+    padding: 24px 16px;
+  }
+
+  .passport-stamps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

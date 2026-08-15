@@ -1,0 +1,210 @@
+/* ===================================================
+   DAYS: Табы дней, раскладка контента, штампы
+   =================================================== */
+
+.days-section {
+  padding: 0 0 var(--section-gap);
+}
+
+/* ---------- Табы ---------- */
+.days-tabs {
+  display: flex;
+  gap: 8px;
+  margin-top: 48px;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.days-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.day-tab {
+  flex-shrink: 0;
+  padding: 14px 28px;
+  border-radius: 100px;
+  border: 2px solid var(--border-soft);
+  background: var(--bg-card);
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.day-tab:hover {
+  border-color: var(--accent-lake-light);
+  color: var(--accent-lake);
+}
+
+.day-tab.active {
+  background: var(--accent-lake);
+  border-color: var(--accent-lake);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(31, 92, 99, 0.25);
+}
+
+/* ---------- Контент дня ---------- */
+.day-content {
+  display: none;
+  animation: fadeInDay 0.5s ease;
+}
+
+.day-content.active {
+  display: block;
+}
+
+.day-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.day-photo {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  aspect-ratio: 3/4;
+}
+
+.day-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.day-photo:hover img {
+  transform: scale(1.03);
+}
+
+.day-info {
+  padding: 8px 0;
+}
+
+.day-header {
+  margin-bottom: 28px;
+}
+
+.day-number {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent-terra);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.day-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 700;
+  color: var(--text-main);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.day-route-info {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- Блоки внутри дня ---------- */
+.day-block {
+  margin-bottom: 28px;
+}
+
+.day-block h4 {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.day-block ul {
+  list-style: none;
+  padding: 0;
+}
+
+.day-block li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.day-block li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-terra);
+}
+
+.day-block p {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* ---------- Штампы экопаспорта (в карточках дней) ---------- */
+.stamps-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stamp-card {
+  background: var(--accent-lake-glow);
+  border: 1px solid rgba(31, 92, 99, 0.12);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.3s ease;
+  flex: 1;
+  min-width: 200px;
+}
+
+.stamp-card:hover {
+  transform: translateY(-2px);
+}
+
+.stamp-emoji {
+  font-size: 1.5rem;
+}
+
+.stamp-info {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  line-height: 1.4;
+}
+
+.stamp-points {
+  font-weight: 700;
+  color: var(--accent-terra);
+  font-size: 0.75rem;
+}

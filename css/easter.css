@@ -1,0 +1,208 @@
+/* ===================================================
+   EASTER: Пасхалка — Животные (Конь, Корова, Коза) + Модалка + Конфетти
+   =================================================== */
+
+/* ---------- Плавающие бейджи животных на полях страницы ---------- */
+.easter-animal-badge {
+  position: absolute;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 100px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.easter-animal-badge:hover {
+  transform: scale(1.15);
+  background: var(--bg-card);
+  box-shadow: 0 12px 32px rgba(201, 122, 61, 0.25);
+  border-color: var(--accent-terra);
+}
+
+.easter-animal-badge .emoji {
+  font-size: 1.8rem;
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+
+.easter-animal-badge:hover .emoji {
+  transform: rotate(10deg) scale(1.2);
+}
+
+.easter-animal-badge .label {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent-lake);
+  letter-spacing: 0.05em;
+}
+
+.easter-animal-badge.found {
+  background: linear-gradient(135deg, var(--accent-lake), var(--accent-terra));
+  border-color: transparent;
+  box-shadow: 0 8px 24px rgba(31, 92, 99, 0.3);
+  animation: animalBounce 0.6s ease;
+}
+
+.easter-animal-badge.found .label,
+.easter-animal-badge.found .emoji {
+  color: #fff;
+}
+
+/* Расположение бейджей на полях страницы */
+#easter-horse-wrap {
+  top: 60%;
+  right: 24px;
+}
+
+#easter-cow-wrap {
+  top: 40%;
+  left: 24px;
+}
+
+#easter-goat-wrap {
+  bottom: 140px;
+  right: 24px;
+}
+
+@keyframes animalBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3) rotate(12deg); }
+}
+
+/* ---------- Модальное окно ---------- */
+.easter-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(29, 29, 31, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  animation: modalFadeIn 0.4s ease;
+}
+
+.easter-modal-overlay.show {
+  display: flex;
+}
+
+.easter-modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.25);
+  animation: modalSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  border: 1px solid var(--border-soft);
+}
+
+.easter-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 6px;
+  transition: color 0.3s ease;
+}
+
+.easter-modal-close:hover {
+  color: var(--text-main);
+}
+
+.easter-modal-emoji {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.easter-modal h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--accent-lake);
+  margin-bottom: 12px;
+}
+
+.easter-modal p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.easter-stamp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, var(--accent-lake), var(--accent-terra));
+  border-radius: 100px;
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(31, 92, 99, 0.3);
+}
+
+/* ---------- Конфетти ---------- */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10001;
+  overflow: hidden;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(-100px) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 1200px) {
+  #easter-horse-wrap { top: 85%; right: 16px; }
+  #easter-cow-wrap { top: 35%; left: 16px; }
+  #easter-goat-wrap { bottom: 80px; right: 16px; }
+}

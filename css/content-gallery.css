@@ -1,0 +1,76 @@
+/* ===================================================
+   CONTENT GALLERY: Блок «Контент» (Пинтерест-мозаика живых фото)
+   =================================================== */
+
+.gallery-section {
+  padding: 0 0 var(--section-gap);
+}
+
+.gallery-masonry {
+  columns: 3 320px;
+  column-gap: 24px;
+  margin-top: 48px;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  margin-bottom: 24px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--glass-shadow-hover);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+.gallery-overlay-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(29, 29, 31, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+  .gallery-masonry {
+    columns: 2 220px;
+    column-gap: 16px;
+  }
+  .gallery-item {
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-masonry {
+    columns: 1 100%;
+  }
+}

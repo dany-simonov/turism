@@ -1,0 +1,154 @@
+/* ===================================================
+   ECOPASSPORT: Акцентный блок + мокап бота
+   =================================================== */
+
+.ecopassport {
+  padding: 0 0 var(--section-gap);
+}
+
+.ecopassport-inner {
+  background: var(--bg-sand);
+  border-radius: var(--radius-xl);
+  padding: 64px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.ecopassport-text h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.ecopassport-text p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.ecopassport-prizes {
+  list-style: none;
+  padding: 0;
+  margin-top: 24px;
+}
+
+.ecopassport-prizes li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.9rem;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ecopassport-prizes li:last-child {
+  border-bottom: none;
+}
+
+/* ---------- Мокап экрана бота ---------- */
+.passport-mockup {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.passport-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.passport-header h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent-lake);
+  margin-top: 12px;
+}
+
+.passport-header p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.passport-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-lake), var(--accent-terra));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.passport-progress {
+  margin-bottom: 24px;
+}
+
+.passport-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.passport-progress-bar {
+  height: 8px;
+  background: var(--border-soft);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.passport-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-lake), var(--accent-terra));
+  border-radius: 100px;
+  width: 72%;
+  transition: width 1.5s ease;
+}
+
+.passport-stamps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.passport-stamp {
+  text-align: center;
+  padding: 12px 8px;
+  background: var(--bg-warm);
+  border-radius: var(--radius-sm);
+  transition: transform 0.3s ease;
+}
+
+.passport-stamp:hover {
+  transform: scale(1.05);
+}
+
+.passport-stamp .emoji {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.passport-stamp .name {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
